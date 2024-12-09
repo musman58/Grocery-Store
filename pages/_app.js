@@ -1,5 +1,19 @@
-import "@/styles/globals.css";
+import '../styles/globals.css';
+import { CartProvider } from '../context/CartContext';
+import { AuthProvider } from '../context/AuthContext';
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }) {
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <div className="min-h-screen bg-gray-600 border-b-2 text-white">
+          
+          <Component {...pageProps} />
+        </div>
+      </CartProvider>
+    </AuthProvider>
+  );
 }
+
+export default MyApp;
+
